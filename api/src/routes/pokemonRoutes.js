@@ -16,13 +16,14 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
+  const { id } = req.params;
   const allPokesId = await getAllPokemon();
   try {
-    const pokemon = allPokesId.find((item) => item.id === req.params.id);
+    const pokemon = allPokesId.find((item) => item.id === id);
     if (!pokemon) {
       return res.status(404).send({ error: "Pokemon not found" });
     }
-    res.status(200).send(pokemon);
+    return res.status(200).send(pokemon);
   } catch (err) {
     console.error(err);
     res.status(500).send({ error: "Server error" });
