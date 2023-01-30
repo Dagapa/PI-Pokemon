@@ -1,6 +1,6 @@
 const express = require("express");
 const { Pokemon, Type } = require("../db");
-const { getAllPokemon } = require("./index");
+const getAllPokemon = require("./getPokemons/allPokemons");
 
 const router = express.Router();
 
