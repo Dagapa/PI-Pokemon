@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios'
 
 export const GET_POKEMONS = "GET_POKEMONS";
 export const GET_ALL_TYPES = "GET_ALL_TYPES";
@@ -19,7 +19,7 @@ export const getPokemons = () => {
       let pokemons = await axios.get(url);
       return dispatch({
         type: GET_POKEMONS,
-        payload: pokemons.data,
+        payload: pokemons.data.allPokes,
       });
     } catch (err) {
       console.error(err);

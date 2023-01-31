@@ -6,9 +6,9 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   const type = await axios.get("https://pokeapi.co/api/v2/type");
-  const res = type.data;
+  const response = type.data;
   try {
-    let types = res.results.map((element) => element.name);
+    let types = response.results.map((element) => element.name);
     types.forEach((type) => {
       Type.findOrCreate({
         where: {
