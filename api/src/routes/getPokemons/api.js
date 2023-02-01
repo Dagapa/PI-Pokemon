@@ -15,7 +15,6 @@ const apiInfo = async () => {
       }));
       pokemons.push(...tempPokemons);
       initialURL = pokemonsData.next;
-      consol
 
       //subrequest Data Pokemons
       let pokesWithData = await Promise.all(
