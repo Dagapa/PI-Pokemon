@@ -51,7 +51,7 @@ async function apiDetail(arg) {
       id: data.id,
       name: data.name,
       img: data.sprites.other.home.front_default,
-      types: data.types.map((type) => type.name),
+      types: data.types.map((type) => type),
       hp: data.stats[0].base_stat,
       attack: data.stats[1].base_stat,
       defense: data.stats[2].base_stat,

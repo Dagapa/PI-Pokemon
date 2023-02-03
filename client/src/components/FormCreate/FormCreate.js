@@ -66,6 +66,8 @@ const PokemonCreate = () => {
     return errors;
   };
 
+  console.log(errors);
+  console.log(Object.keys(errors).length === 0 ? true: false);
   // handle functions
   const handleChange = (event) => {
     setInput({
@@ -92,18 +94,27 @@ const PokemonCreate = () => {
     }
   };
 
+  // console.log(errors.name ? true : false);
+  // console.log(errors.hp ? true : false);
+  // console.log(errors.attack ? true : false);
+  // console.log(errors.defense ? true : false);
+  // console.log(errors.speed ? true : false);
+  // console.log(errors.height ? true : false);
+  // console.log(errors.weight ? true : false);
+  // console.log(errors.img ? true : false);
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (
-      !errors.name &&
-      !errors.hp &&
-      !errors.attack &&
-      !errors.defense &&
-      !errors.speed &&
-      !errors.height &&
-      !errors.weight &&
-      !errors.img
+    if (Object.keys(errors).length === 0
+      // !errors.name &&
+      // !errors.hp &&
+      // !errors.attack &&
+      // !errors.defense &&
+      // !errors.speed &&
+      // !errors.height &&
+      // !errors.weight &&
+      // !errors.img
     ) {
       dispatch(postPokemon(input));
       setInput({
@@ -134,6 +145,7 @@ const PokemonCreate = () => {
   useEffect(() => {
     dispatch(getAlltypes());
   }, [dispatch]);
+
 
   return (
     <div className={styles.container}>
@@ -253,14 +265,14 @@ const PokemonCreate = () => {
           <select
             className={styles.select}
             onChange={(event) => {
-              handleventSelect(event);
+              handleSelect(event);
             }}
           >
             <option>Select type</option>
             {types?.map((element) => {
               return (
                 <option key={element.id} value={element.name}>
-                  {e.name}
+                  {element.name}
                 </option>
               );
             })}

@@ -18,10 +18,10 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
   const allPokesId = await getAllPokemon();
+  const pokemon = allPokesId.find((item) => item.id == id);
+  console.log(pokemon);
   try {
-    const pokemon = allPokesId.find((item) => item.id === id);
     if (!pokemon) {
-      console.log(pokemon)
       return res.status(404).send({ error: "Pokemon not found" });
     }
     return res.status(200).send(pokemon);
@@ -35,6 +35,7 @@ router.post("/", async (req, res) => {
   const allPokes = await getAllPokemon();
   const { name, hp, attack, defense, speed, height, weight, img, types } =
     req.body;
+  console.log(req.body);  
   try {
     if (name) {
       const exist = allPokes.find((item) => item.name === name);

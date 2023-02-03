@@ -9,6 +9,7 @@ import styles from "./Detail.module.css";
 const Detail = (props) => {
   const dispatch = useDispatch();
   const myPokemon = useSelector((state) => state.pokeDetail);
+  console.log(myPokemon);
 
   useEffect(() => {
     dispatch(getDetail(props.match.params.id));
@@ -19,7 +20,14 @@ const Detail = (props) => {
 
   return (
     <div>
-      {myPokemon.length > 0 ? (
+      <h2>
+      {myPokemon.name}
+      </h2>
+      {
+        myPokemon.hp
+      }
+      <img src={myPokemon.img}/>
+      {/* {myPokemon ? (
         <div className={styles.container}>
           <div className={styles.card}>
             <h2 className={styles.h2}>
@@ -69,7 +77,7 @@ const Detail = (props) => {
         <Link to="/home">
           <button className={styles.btn}>Go back</button>
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 };
