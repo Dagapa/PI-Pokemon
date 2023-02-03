@@ -35,12 +35,17 @@ const Detail = (props) => {
             />
             <div className={styles.types}>
               <h3>
-                {myPokemon[0].types?.map((e, k) => {
+                {myPokemon[0].types?.map((element, index) => {
                   return (
-                    <div className={styles.types} key={k}>
-                      <img className={styles.typesImg} src={e.img} alt="X" />
+                    <div className={styles.types} key={index}>
+                      <img
+                        className={styles.typesImg}
+                        src={element.img}
+                        alt="X"
+                      />
                       <p className={styles.text}>
-                        {e.name.charAt(0).toUpperCase() + e.name.slice(1)}
+                        {element.name.charAt(0).toUpperCase() +
+                          element.name.slice(1)}
                       </p>
                     </div>
                   );

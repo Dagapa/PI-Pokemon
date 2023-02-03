@@ -2,11 +2,11 @@ const axios = require("axios");
 
 const apiInfo = async () => {
   try {
-    let initialURL = "https://pokeapi.co/api/v2/pokemon";
+    let initialURL = "https://pokeapi.co/api/v2/pokemon?limit=40";
     let pokemons = [];
 
     // limit to 40 pokemons
-    while (initialURL != null && pokemons.length < 80) {
+    while (initialURL != null && pokemons.length < 40) {
       let res = await axios.get(initialURL);
       let pokemonsData = res.data;
       let tempPokemons = pokemonsData.results.map((element) => ({

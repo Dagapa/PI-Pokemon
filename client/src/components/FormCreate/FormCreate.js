@@ -10,7 +10,7 @@ const PokemonCreate = () => {
   const [errors, setErrors] = useState({});
   const history = useHistory();
 
-  const [input, setInput] = useState({
+  const newPokemon = {
     name: "",
     hp: "",
     attack: "",
@@ -20,7 +20,11 @@ const PokemonCreate = () => {
     weight: "",
     types: [],
     img: "",
-  });
+  };
+
+  const [input, setInput] = useState(newPokemon);
+
+  //Validate a inputs value
 
   let noEmpty = /\S+/;
   let validateName = /^[a-z]+$/i;
@@ -62,33 +66,34 @@ const PokemonCreate = () => {
     return errors;
   };
 
-  const handleChange = (e) => {
+  // handle functions
+  const handleChange = (event) => {
     setInput({
       ...input,
-      [e.target.name]: e.target.value,
+      [event.target.name]: event.target.value,
     });
     setErrors(
       validate({
         ...input,
-        [e.target.name]: e.target.value,
+        [event.target.name]: event.target.value,
       })
     );
   };
 
-  const handleSelect = (e) => {
+  const handleSelect = (event) => {
     if (input.types.length < 2) {
       setInput({
         ...input,
-        types: [...input.types, e.target.value],
+        types: [...input.types, event.target.value],
       });
-      e.target.value = "Select type";
+      event.target.value = "Select type";
     } else {
       alert("Two types of pokemon at most");
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
     if (
       !errors.name &&
@@ -247,36 +252,34 @@ const PokemonCreate = () => {
         <div>
           <select
             className={styles.select}
-            onChange={(e) => {
-              handleSelect(e);
+            onChange={(event) => {
+              handleventSelect(event);
             }}
           >
             <option>Select type</option>
-            {types?.map((e) => {
+            {types?.map((element) => {
               return (
-                <option key={e.id} value={e.name}>
+                <option key={element.id} value={element.name}>
                   {e.name}
                 </option>
               );
             })}
           </select>
-          {
-            input.types.map((e) => {
-              return (
-                <div className={styles.typesSelect} key={e}>
-                  <p className={styles.pTypes}>{e}</p>
-                  <button
-                    className={styles.btnDelete}
-                    onClick={() => {
-                      handleDelete(e);
-                    }}
-                  >
-                    x
-                  </button>
-                </div>
-              );
-            }) //para poder ver que fui seleccionando
-          }
+          {input.types.map((element) => {
+            return (
+              <div className={styles.typesSelect} key={element}>
+                <p className={styles.pTypes}>{element}</p>
+                <button
+                  className={styles.btnDelete}
+                  onClick={() => {
+                    handleDelete(element);
+                  }}
+                >
+                  x
+                </button>
+              </div>
+            );
+          })}
         </div>
         <button className={styles.btnCreate} type="submit">
           Create!

@@ -20,7 +20,7 @@ export default function Card({ name, image, types, id }) {
 
   return (
     <div>
-      <NavLink className={styles.none} to={`/pokemon/${id}`}>
+      <NavLink className={styles.none} to={`/pokemons/${id}`}>
         <div>
           <img
             className={styles.img}
@@ -33,7 +33,7 @@ export default function Card({ name, image, types, id }) {
           <div className={styles.types}>
             {detailTypes?.map((element, index) => {
               return (
-                <button className={styles.typesButton}> {element.type.name} </button>
+                <button className={styles.typesButton} key={index}> {element.type.name} </button>
               );
             })}
           </div>

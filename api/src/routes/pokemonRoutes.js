@@ -21,6 +21,7 @@ router.get("/:id", async (req, res) => {
   try {
     const pokemon = allPokesId.find((item) => item.id === id);
     if (!pokemon) {
+      console.log(pokemon)
       return res.status(404).send({ error: "Pokemon not found" });
     }
     return res.status(200).send(pokemon);

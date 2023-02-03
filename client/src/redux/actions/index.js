@@ -103,7 +103,7 @@ export function getDetail(id) {
           payload: res,
         })
       )
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   };
 }
 
@@ -117,7 +117,7 @@ export const cleanDetail = (dispatch) => {
 export const postPokemon = (payload) => {
   return async () => {
     try {
-      var createPoke = await axios.post(
+      const createPoke = await axios.post(
         "http://localhost:3001/pokemons",
         payload
       );
