@@ -1,0 +1,17 @@
+.navContainer {
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #1E90FF;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+}
+
+.navContainer a {
+  text-decoration: none;
+  color: white;
+}
+

@@ -6,7 +6,7 @@ export default function Card({ name, image, types, id }) {
   const itemTypes = types.map((type) => type);
   const detailTypes = itemTypes.map((type) => type);
 
-  // console.log(detailTypes)
+  // console.log(detailTypes);
 
   function capitalize(name) {
     if (name.length === 0) {
@@ -22,6 +22,7 @@ export default function Card({ name, image, types, id }) {
     <div>
       <NavLink className={styles.none} to={`/pokemons/${id}`}>
         <div>
+          <p className={styles.id}>{id}</p>
           <img
             className={styles.img}
             src={image}
@@ -32,9 +33,21 @@ export default function Card({ name, image, types, id }) {
           <h2>{capitalize(name)}</h2>
           <div className={styles.types}>
             {detailTypes?.map((element, index) => {
-              return (
-                <button className={styles.typesButton} key={index}> {element.type.name} </button>
-              );
+              if (typeof element.type !== "undefined") {
+                return (
+                  <button className={styles.typesButton} key={index}>
+                    {" "}
+                    {element.type.name}{" "}
+                  </button>
+                );
+              } else {
+                return (
+                  <button className={styles.typesButton} key={index}>
+                    {" "}
+                    {element.name}{" "}
+                  </button>
+                );
+              }
             })}
           </div>
         </div>

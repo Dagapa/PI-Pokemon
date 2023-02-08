@@ -24,6 +24,8 @@ export default function Home() {
     indexOfLastPokemon
   );
 
+  // console.log(currentPokemons)
+
   const pagination = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -56,13 +58,6 @@ export default function Home() {
               </button>
             </div>
             <div>
-              <div>
-                <Pagination
-                  pokemonsPerPage={pokemonsPerPage}
-                  allPokemons={allPokemons.length}
-                  pagination={pagination}
-                />
-              </div>
               <div className={styles.cards}>
                 {currentPokemons.map((element, index) => {
                   return (
@@ -77,6 +72,13 @@ export default function Home() {
                     </div>
                   );
                 })}
+              </div>
+              <div>
+                <Pagination
+                  pokemonsPerPage={pokemonsPerPage}
+                  allPokemons={allPokemons.length}
+                  pagination={pagination}
+                />
               </div>
             </div>
           </div>
