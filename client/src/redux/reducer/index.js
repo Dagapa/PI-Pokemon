@@ -56,13 +56,13 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case FILTER_TYPE:
-      let copyTwo = state.pokemons;
+      let copyTypes = state.pokemons;
       let typeFiltered = [];
 
       if (action.payload === "all") {
-        typeFiltered = copyTwo;
+        typeFiltered = copyTypes;
       } else {
-        copyTwo.forEach((item) => {
+        copyTypes.forEach((item) => {
           item.types.forEach((e) => {
             if (e.type && e.type.name === action.payload) {
               typeFiltered.push(item);
@@ -74,7 +74,7 @@ const rootReducer = (state = initialState, action) => {
       }
 
       if (typeFiltered.length <= 0) {
-        typeFiltered = copyTwo;
+        typeFiltered = copyTypes;
         alert("There are no pokemon of the indicated type");
       }
       return {
@@ -83,13 +83,13 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case ORDER_NAME:
-      let copy3 = state.pokemons;
+      let copyName = state.pokemons;
       let sortedName =
         action.payload === "asc"
-          ? copy3.sort((a, b) => {
+          ? copyName.sort((a, b) => {
               return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
             })
-          : copy3.sort((a, b) => {
+          : copyName.sort((a, b) => {
               return b.name.toLowerCase().localeCompare(a.name.toLowerCase());
             });
       return {
@@ -112,14 +112,14 @@ const rootReducer = (state = initialState, action) => {
     case CLEAN_DETAIL:
       return {
         ...state,
-        pokeDetail: action.payload,
+        pokeDetail: [],
       };
 
     case POST_POKEMON:
       return {
         ...state,
       };
-      
+
     default:
       return { ...state };
   }
