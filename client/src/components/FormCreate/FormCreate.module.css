@@ -132,7 +132,7 @@
   text-decoration: none;
   width: 8vw;
   height: 5vh;
-  background-color: #00BFFF;
+  background-color: #1E90FF;
   color: white;
   border: none;
   border-radius: 5px;
@@ -157,14 +157,10 @@
 
 .btnDelete {
   text-decoration: none;
-  width: 1vw;
-  height: 2vh;
-  background-color: rgba(48, 30, 9, 0.616);
-  color: rgb(184, 184, 184);
+  background-color: #1E90FF;
+  color: white;
   border: none;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.651);
-  font-family: 'Verdana', sans-serif;
   font-size: 0.8rem;
   text-align: center;
   cursor: pointer;
