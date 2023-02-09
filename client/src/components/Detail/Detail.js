@@ -3,13 +3,11 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail, cleanDetail, cleanPokemons } from "../../redux/actions";
 import { useEffect } from "react";
-import Loading from "../Loading/Loading";
 import styles from "./Detail.module.css";
 
 const Detail = (props) => {
   const dispatch = useDispatch();
   const myPokemon = useSelector((state) => state.pokeDetail);
-  console.log(myPokemon);
 
   useEffect(() => {
     dispatch(getDetail(props.match.params.id));
@@ -18,66 +16,39 @@ const Detail = (props) => {
     };
   }, [dispatch, props.match.params.id]);
 
+  const renderTypes = () => {
+    if (myPokemon && myPokemon.types) {
+      const pokeDetails = myPokemon.types;
+      return pokeDetails.map((element) => {
+        if (typeof element.type === "undefined") {
+          return <button className={styles.types}>{element.name}</button>;
+        } else {
+          return <button className={styles.types}>{element.type.name}</button>;
+        }
+      });
+    }
+    return null;
+  };
+
   return (
-    <div>
-      <h2>
-      {myPokemon.name}
-      </h2>
-      {
-        myPokemon.hp
-      }
-      <img src={myPokemon.img}/>
-      {/* {myPokemon ? (
-        <div className={styles.container}>
-          <div className={styles.card}>
-            <h2 className={styles.h2}>
-              {myPokemon[0].name.charAt(0).toUpperCase() +
-                myPokemon[0].name.slice(1)}
-            </h2>
-            <p className={styles.p}>#{myPokemon[0].id}</p>
-            <img
-              src={myPokemon[0].img}
-              alt="img not found"
-              height="250px"
-              width="200px"
-            />
-            <div className={styles.types}>
-              <h3>
-                {myPokemon[0].types?.map((element, index) => {
-                  return (
-                    <div className={styles.types} key={index}>
-                      <img
-                        className={styles.typesImg}
-                        src={element.img}
-                        alt="X"
-                      />
-                      <p className={styles.text}>
-                        {element.name.charAt(0).toUpperCase() +
-                          element.name.slice(1)}
-                      </p>
-                    </div>
-                  );
-                })}{" "}
-              </h3>
-            </div>
-            <h5 className={styles.h5}>HP: {myPokemon[0].hp}</h5>
-            <h5 className={styles.h5}>Attack: {myPokemon[0].attack}</h5>
-            <h5 className={styles.h5}>Defense: {myPokemon[0].defense}</h5>
-            <h5 className={styles.h5}>Speed: {myPokemon[0].speed}</h5>
-            <h5 className={styles.h5}>Height: {myPokemon[0].height}</h5>
-            <h5 className={styles.h5}>Weight: {myPokemon[0].weight}</h5>
-          </div>
-        </div>
-      ) : (
-        <div>
-          <Loading />
-        </div>
-      )}
+    <div className={styles.container}>
+      <div className={styles.card}>
+        <h2>{myPokemon.name}</h2>
+        <p className={styles.id}>{myPokemon.id}</p>
+        <img src={myPokemon.img} />
+        {renderTypes()}
+        <h5 className={styles.stats}>HP: {myPokemon.hp}</h5>
+        <h5 className={styles.stats}>Attack: {myPokemon.attack}</h5>
+        <h5 className={styles.stats}>Defense: {myPokemon.defense}</h5>
+        <h5 className={styles.stats}>Speed: {myPokemon.speed}</h5>
+        <h5 className={styles.stats}>Height: {myPokemon.height}</h5>
+        <h5 className={styles.stats}>Weight: {myPokemon.weight}</h5>
+      </div>
       <div>
         <Link to="/home">
           <button className={styles.btn}>Go back</button>
         </Link>
-      </div> */}
+      </div>
     </div>
   );
 };

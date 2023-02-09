@@ -15,3 +15,32 @@
   color: white;
 }
 
+.nav_all {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav_all img {
+  height: 40px;
+}
+
+.nav_home {
+  margin: 5px;
+}
+
+.nav_home img {
+  height: 55px;
+}
+
+.nav_create {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav_create img {
+  height: 40px;
+}

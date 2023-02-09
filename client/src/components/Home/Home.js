@@ -11,7 +11,6 @@ import styles from "./Home.module.css";
 export default function Home() {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons);
-  // const [pokemon, setPokemon ] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [pokemonsPerPage, setPokemonsPerPage] = useState(12);
@@ -23,8 +22,6 @@ export default function Home() {
     indexOfFirstPokemon,
     indexOfLastPokemon
   );
-
-  // console.log(currentPokemons)
 
   const pagination = (pageNumber) => {
     setCurrentPage(pageNumber);

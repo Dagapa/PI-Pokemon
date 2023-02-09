@@ -11,12 +11,11 @@ const SearchBar = () => {
   const handleInputChange = (e) => {
     e.preventDefault();
     setName(e.target.value);
-    console.log(name);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(cleanPokemons(dispatch));
+    dispatch(cleanPokemons(dispatch))
     dispatch(getPokemonByName(name));
     setName("");
   };
@@ -37,9 +36,7 @@ const SearchBar = () => {
           value={name}
           className={styles.input}
         />
-        <button type="submit" className={styles.btn}>
-          Buscar
-        </button>
+        <button className={styles.btn}>Buscar</button>
       </form>
     </div>
   );

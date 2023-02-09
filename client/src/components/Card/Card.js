@@ -6,8 +6,6 @@ export default function Card({ name, image, types, id }) {
   const itemTypes = types.map((type) => type);
   const detailTypes = itemTypes.map((type) => type);
 
-  // console.log(detailTypes);
-
   function capitalize(name) {
     if (name.length === 0) {
       return "";

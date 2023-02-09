@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from "axios";
 
 export const GET_POKEMONS = "GET_POKEMONS";
 export const GET_ALL_TYPES = "GET_ALL_TYPES";
@@ -79,31 +79,33 @@ export const filterStr = (payload) => {
 
 export const getPokemonByName = (name) => {
   return async (dispatch) => {
+    const pokeName = await axios.get(
+      `http://localhost:3001/pokemons?name=${name}`
+    );
+    console.log("si llegue");
+    console.log(pokeName.data);
     try {
-      const pokeName = await axios.get(`http://localhost:3001/pokemons?name=${name}`);
       return dispatch({
         type: GET_POKEMON_NAME,
         payload: pokeName.data,
       });
     } catch (err) {
-      window.location.href = "http://localhost:3000/home";
       console.error(err);
     }
   };
 };
 
 export function getDetail(id) {
-  return function (dispatch) {
-    axios
-      .get(`http://localhost:3001/pokemons/${id}`)
-      .then((res) => res.data)
-      .then((res) =>
-        dispatch({
-          type: GET_DETAILS,
-          payload: res,
-        })
-      )
-      .catch((err) => console.error(err));
+  return async function (dispatch) {
+    try {
+      const res = await axios.get(`http://localhost:3001/pokemons/${id}`);
+      dispatch({
+        type: GET_DETAILS,
+        payload: res.data,
+      });
+    } catch (err) {
+      console.error(err);
+    }
   };
 }
 
