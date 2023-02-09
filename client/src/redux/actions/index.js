@@ -64,6 +64,7 @@ export const orderName = (payload) => {
 };
 
 export const filterType = (payload) => {
+  console.log(payload);
   return {
     type: FILTER_TYPE,
     payload,

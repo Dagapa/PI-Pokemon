@@ -33,6 +33,7 @@ const Filters = ({ setCurrentPage, setOrder }) => {
 
   const handleFilterType = (e) => {
     e.preventDefault();
+    console.log(e.target.value);
     dispatch(filterType(e.target.value));
     setCurrentPage(1);
   };
@@ -41,7 +42,6 @@ const Filters = ({ setCurrentPage, setOrder }) => {
     e.preventDefault();
     dispatch(filterStr(e.target.value));
     setCurrentPage(1);
-    setOrder(e.target.value);
   };
 
   return (
@@ -83,34 +83,10 @@ const Filters = ({ setCurrentPage, setOrder }) => {
 
       <div>
         <h4 className={styles.h4}>Order</h4>
-        <select className={styles.select}>
+        <select className={styles.select} onChange={(e) => handleOrderName(e)}>
           <option>-</option>
-          <option className={styles.order}>Strength</option>
-          <option
-            value="asc"
-            onClick={(e) => {
-              handleFilterStr(e);
-            }}
-          >
-            ASC
-          </option>
-          <option
-            value="desc"
-            onClick={(e) => {
-              handleFilterStr(e);
-            }}
-          >
-            DESC
-          </option>
           <option className={styles.order}>Alphabetically</option>
-          <option
-            value="asc"
-            onClick={(e) => {
-              handleOrderName(e);
-            }}
-          >
-            A - Z
-          </option>
+          <option value="asc">A - Z</option>
           <option
             value="desc"
             onClick={(e) => {
