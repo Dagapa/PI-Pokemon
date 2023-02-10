@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
         ? res.status(200).send(poke)
         : res.status(404).send("Pokemon not found");
     }
-    if (allPokes.length > 0) {
+    if (allPokes) {
       return res.status(200).send({ allPokes });
     }
   } catch (err) {

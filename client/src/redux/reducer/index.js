@@ -4,7 +4,6 @@ import {
   FILTER_CREATED,
   ORDER_NAME,
   FILTER_TYPE,
-  ORDER_STR,
   GET_POKEMON_NAME,
   POST_POKEMON,
   GET_DETAILS,
@@ -42,11 +41,17 @@ const rootReducer = (state = initialState, action) => {
 
     case FILTER_CREATED:
       let copy = state.allPokemons;
-      let createdFiltered;
+      let createdFiltered = [];
       if (action.payload === "created") {
-        createdFiltered = copy.filter((e) => e.createdInBd);
+        createdFiltered = copy.filter((element) => {
+          if (element.idPoke) return true;
+          else return false;
+        });
       } else if (action.payload === "api") {
-        createdFiltered = copy.filter((e) => !e.createdInBd);
+        createdFiltered = copy.filter((element) => {
+          if (!element.idPoke) return true;
+          else return false;
+        });
       } else {
         createdFiltered = copy;
       }

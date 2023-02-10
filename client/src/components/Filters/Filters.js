@@ -5,7 +5,6 @@ import {
   filterCreated,
   orderName,
   filterType,
-  filterStr,
 } from "../../redux/actions";
 import SearchBar from "../SearchBar/SearchBar";
 import styles from "./Filters.module.css";
@@ -33,14 +32,7 @@ const Filters = ({ setCurrentPage, setOrder }) => {
 
   const handleFilterType = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
     dispatch(filterType(e.target.value));
-    setCurrentPage(1);
-  };
-
-  const handleFilterStr = (e) => {
-    e.preventDefault();
-    dispatch(filterStr(e.target.value));
     setCurrentPage(1);
   };
 

@@ -33,8 +33,8 @@ export default function Home() {
 
   const handleClick = (event) => {
     event.preventDefault();
-    dispatch(cleanPokemons(dispatch));
     dispatch(getPokemons());
+    
   };
 
   return (
