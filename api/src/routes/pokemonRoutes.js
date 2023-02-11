@@ -4,25 +4,34 @@ const getAllPokemon = require("./getPokemons/allPokemons");
 
 const router = express.Router();
 
+let allPokes;
+
 router.get("/", async (req, res) => {
   const { name } = req.query;
-  const allPokes = await getAllPokemon();
+
+  if (!allPokes) {
+    allPokes = await getAllPokemon();
+  }
+
   try {
     if (name) {
-      let poke = allPokes.filter(
+      const poke = allPokes.find(
         (element) => element.name.toLowerCase() === name.toLowerCase()
       );
-      poke.length
-        ? res.status(200).send(poke)
-        : res.status(404).send("Pokemon not found");
+
+      if (poke) {
+        return res.status(200).send(poke);
+      } else {
+        return res.status(404).send("Pokemon not found");
+      }
     }
-    if (allPokes) {
-      return res.status(200).send({ allPokes });
-    }
+
+    return res.status(200).send({ allPokes });
   } catch (err) {
     console.error(err);
   }
 });
+
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
