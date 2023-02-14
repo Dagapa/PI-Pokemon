@@ -11,7 +11,7 @@ const Error404 = () => {
       <p className={styles["text-404"]}>Oops! Pagina no encontrada.</p>
       <p>Regrese a la página inicial, es mejor.</p>
       <Link to={'/Home'}>
-        <button>Go Back</button>
+        <button className={styles.btn}>Go Back</button>
       </Link>
     </div>
   );
