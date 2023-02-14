@@ -83,11 +83,11 @@ export const getPokemonByName = (name) => {
       `http://localhost:3001/pokemons?name=${name}`
     );
     console.log("si llegue");
-    console.log(pokeName.data);
+    console.log([pokeName.data]);
     try {
       return dispatch({
         type: GET_POKEMON_NAME,
-        payload: pokeName.data,
+        payload: [pokeName.data],
       });
     } catch (err) {
       console.error(err);

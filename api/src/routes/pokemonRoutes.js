@@ -4,16 +4,16 @@ const getAllPokemon = require("./getPokemons/allPokemons");
 
 const router = express.Router();
 
-let allPokes;
+// let allPokes;
 
 router.get("/", async (req, res) => {
   const { name } = req.query;
-
-  if (!allPokes) {
-    allPokes = await getAllPokemon();
-  }
+  // if (!allPokes) {
+  //   allPokes = await getAllPokemon();
+  // }
 
   try {
+    const allPokes = await getAllPokemon();
     if (name) {
       const poke = allPokes.find(
         (element) => element.name.toLowerCase() === name.toLowerCase()
@@ -31,7 +31,6 @@ router.get("/", async (req, res) => {
     console.error(err);
   }
 });
-
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
