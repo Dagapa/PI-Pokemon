@@ -10,6 +10,8 @@
 }
 
 .items {
+  display: flex;
+  justify-content: center;
   text-align: center;
   list-style: none;
   border: 1px solid #1E90FF;
@@ -28,4 +30,12 @@
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
+}
+
+.active {
+  display: flex;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  border: 1px solid yellow;
 }
