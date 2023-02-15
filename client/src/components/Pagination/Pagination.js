@@ -28,33 +28,55 @@ const Pagination = ({
 
   return (
     <nav>
-      <ul className={styles.list}>
-        <li className={styles.items}>
-          <a href="#" className={styles.a} onClick={handlePrev}>
-            &lt;
-          </a>
-        </li>
-        {pageNumbers?.map((number) => (
-          <li
-            className={`${styles.items} ${
-              currentPage === number ? active : ""
-            }`}
-            key={number}
-          >
-            <a href="#" className={styles.a} onClick={() => pagination(number)}>
-              {number}
+      {pageNumbers > 1 ? (
+        <ul className={styles.list}>
+          <li className={styles.items}>
+            <a href="#" className={styles.a} onClick={handlePrev}>
+              &lt;
             </a>
           </li>
-        ))}
-        {/* <li className={`${styles.items} ${currentPage === 1 ? active : ""}`}>
-          {currentPage}
-        </li> */}
-        <li className={styles.items}>
-          <a href="#" className={styles.a} onClick={handleNext}>
-            &gt;
-          </a>
-        </li>
-      </ul>
+          {pageNumbers?.map((number) => (
+            <li
+              className={`${styles.items} ${
+                currentPage === number ? active : ""
+              }`}
+              key={number}
+            >
+              <a
+                href="#"
+                className={styles.a}
+                onClick={() => pagination(number)}
+              >
+                {number}
+              </a>
+            </li>
+          ))}
+          <li className={styles.items}>
+            <a href="#" className={styles.a} onClick={handleNext}>
+              &gt;
+            </a>
+          </li>
+        </ul>
+      ) : (
+        <ul className={styles.list}>
+          {pageNumbers?.map((number) => (
+            <li
+              className={`${styles.items} ${
+                currentPage === number ? active : ""
+              }`}
+              key={number}
+            >
+              <a
+                href="#"
+                className={styles.only}
+                onClick={() => pagination(number)}
+              >
+                {number}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
     </nav>
   );
 };
