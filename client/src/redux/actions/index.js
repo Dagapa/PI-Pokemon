@@ -64,6 +64,7 @@ export const orderName = (payload) => {
 };
 
 export const filterType = (payload) => {
+  console.log(payload);
   return {
     type: FILTER_TYPE,
     payload,
@@ -82,13 +83,12 @@ export const getPokemonByName = (name) => {
     const pokeName = await axios.get(
       `http://localhost:3001/pokemons?name=${name}`
     );
-    console.log("si llegue");
-    console.log([pokeName.data]);
     try {
-      return dispatch({
-        type: GET_POKEMON_NAME,
-        payload: [pokeName.data],
-      });
+        return dispatch({
+          type: GET_POKEMON_NAME,
+          payload: [pokeName.data],
+        });
+      
     } catch (err) {
       console.error(err);
     }

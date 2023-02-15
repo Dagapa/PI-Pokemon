@@ -10,7 +10,7 @@ import styles from "./Home.module.css";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const allPokemons = useSelector((state) => state.pokemons);
+  const allPokemons = useSelector((state) => [...state.pokemons]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [pokemonsPerPage, setPokemonsPerPage] = useState(12);
@@ -34,7 +34,6 @@ export default function Home() {
   const handleClick = (event) => {
     event.preventDefault();
     dispatch(getPokemons());
-    
   };
 
   return (

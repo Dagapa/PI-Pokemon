@@ -18,7 +18,6 @@ router.get("/", async (req, res) => {
       const poke = allPokes.find(
         (element) => element.name.toLowerCase() === name.toLowerCase()
       );
-
       if (poke) {
         return res.status(200).send(poke);
       } else {

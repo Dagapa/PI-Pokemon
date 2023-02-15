@@ -61,13 +61,14 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case FILTER_TYPE:
-      let copyTypes = state.pokemons;
+      let copyTypes = [...state.pokemons];
+      let copy2 = [...state.allPokemons];
       let typeFiltered = [];
-
+      
       if (action.payload === "all") {
         typeFiltered = copyTypes;
       } else {
-        copyTypes.forEach((item) => {
+        copy2.forEach((item) => {
           item.types.forEach((e) => {
             if (e.type && e.type.name === action.payload) {
               typeFiltered.push(item);
@@ -79,7 +80,7 @@ const rootReducer = (state = initialState, action) => {
       }
 
       if (typeFiltered.length <= 0) {
-        typeFiltered = copyTypes;
+        typeFiltered = copy2;
         alert("There are no pokemon of the indicated type");
       }
       return {
